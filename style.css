@@ -1,36 +1,143 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
 
-
-
 :root {
---red: hsl(0, 78%, 62%);
---cyan: hsl(180, 62%, 55%);
---orange: hsl(34, 97%, 64%);
---blue: hsl(212, 86%, 64%);
---very-dark-blue: hsl(234, 12%, 34%);
---grayish-blue: hsl(229, 6%, 66%);
---very-light-gray: hsl(0, 0%, 98%);
+	--red: hsl(0, 78%, 62%);
+	--cyan: hsl(180, 62%, 55%);
+	--orange: hsl(34, 97%, 64%);
+	--blue: hsl(212, 86%, 64%);
+	--very-dark-blue: hsl(234, 12%, 34%);
+	--grayish-blue: hsl(229, 6%, 66%);
+	--very-light-gray: hsl(0, 0%, 98%);
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 html:focus-within {
-    scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
-
-
 
 body {
-    font-family: 'Poppins', sans-serif;
-    width: 100vw;
-    overflow-x: hidden;
-    background-color: var(--grayish-blue);
+	min-height: 100vh;
+	width: 100vw;
+	overflow-x: hidden;
+	background-color: var(--very-light-gray);
+	font-family: 'Poppins', sans-serif;
+	font-style: normal;
+	padding: 80px 0;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+img {
+	width: 64px;
+	height: 64px;
+}
+
+.main {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 64px;
+}
+
+.main__top-section {
+    animation: slide-bottom-fade 1.5s;
+}
+
+.main__top-section_header {
+	text-align: center;
+	color: var(--very-dark-blue);
+	font-size: 36px;
+	font-weight: 275;
+	line-height: normal;
+	letter-spacing: 0.25px;
+}
+
+.main__top-section_header--bold {
+	text-align: center;
+	font-weight: 600;
+	margin-bottom: 13px;
+}
+
+.main__top-section_body {
+	color: var(--very-dark-blue);
+	text-align: center;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 25px;
+	letter-spacing: 0.104px;
+    opacity: 0.5;
+    width: 540px;
+    margin: auto;
+}
+
+.main__bottom-section {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 30px;
+    animation: slide-top-fade 1.5s;
+
+}
+
+.main__bottom-section__middle {
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.card {
+	width: 350px;
+	height: 250px;
+	background: #fff;
+	box-shadow: 0px 15px 30px -11px rgba(131, 166, 210, 0.5);
+	border-radius: 8px;
+	padding: 32px;
+
+	display: flex;
+	flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.card__content_head {
+	font-size: 20px;
+	font-weight: 600;
+	line-height: normal;
+}
+
+.card__content_body {
+	color: var(--very-dark-blue);
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 23px;
+	letter-spacing: 0.09px;
+}
+
+
+.card--supervisor {
+    border-top: 4px solid var(--cyan);
+}
+
+.card--team-builder {
+    border-top: 4px solid var(--red);
+}
+
+.card--karma {
+    border-top: 4px solid var(--orange);
+}
+
+.card--calculator {
+    border-top: 4px solid var(--blue);
+
 }
 
 
@@ -38,29 +145,82 @@ body {
 
 
 
+@keyframes slide-top-fade {
+    0% {
+        opacity: 0;
+        transform: translateY(500px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 
+@keyframes slide-bottom-fade {
+    0% {
+        opacity: 0;
+        transform: translateY(-500px);
+    }
 
-
-
-
-
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 
 
 
 @media (prefers-reduced-motion: reduce) {
-    html:focus-within {
-      scroll-behavior: auto;
+	html:focus-within {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+
+
+@media (min-width: 846px) and (max-width: 1122px) {
+    .card {
+        width: 250px;
+        padding: 12px;
     }
-  
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
+}
+
+@media (max-width: 846px) {
+    .main__bottom-section, .main__bottom-section__middle {
+        display: grid;
     }
-  }
-  
+
+
+    .main__top-section_header {
+        font-size: 24px;
+    }
+}
+
+
+@media (max-width: 556px) {
+
+    .card {
+        width: 300px;
+        padding: 24px;
+    }
+
+    .main__top-section_body {
+        max-width: 311px;
+    }
+
+    .main__bottom-section, .main__bottom-section__middle {
+        gap: 24px;
+    }
+}
