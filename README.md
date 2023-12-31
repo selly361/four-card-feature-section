@@ -1,6 +1,6 @@
 # Four Card Feature Section
 
-![](./images/desktop-design.jpg)
+![](./design/desktop-design.jpg)
 
 ### [Live Site](example.com)
 
